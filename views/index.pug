@@ -1,0 +1,23 @@
+extends layout/mainboard.pug
+
+block content
+  .login-wrapper.lboxcontainer
+    .loginbox
+      form.login
+        .imgcontainer
+          img.avatar(src='/img/avatar.png', alt='Avatar')
+        .logincontainer
+          label.loginform(for='uname')
+            b Username
+          input(type='text', placeholder='Enter Username', name='uname', required='')
+          label.loginform(for='psw')
+            b Password
+          input(type='password', placeholder='Enter Password', name='psw', required='')
+          button.loginform(type='submit') Login
+          label.loginform
+            input(type='checkbox', checked='checked', name='remember')
+            |  Remember me
+          span.psw
+            | Need help 
+            a(href='reset-password.html') logging in?
+  

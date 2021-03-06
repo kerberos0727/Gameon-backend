@@ -1,0 +1,32 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 View User Reports
+        p Here you can view reported users and their reasons
+        br
+        // View existing members section
+        h1 Edit Sports listed
+        .tablecontainer
+            table#result
+                thead
+                    tr
+                        th Name of reporter
+                        th Accused Violater
+                        th Email of reporter
+                        th Email of Violater
+                        th Violation Category
+                        th Respond
+                tfooter
+                    tr
+                        th Name of reporter
+                        th Accused Violater
+                        th Email of reporter
+                        th Email of Violater
+                        th Violation Category
+                        th Respond
+        // View existing members section end
+
+block extra-script
+    script(src='/js/report.js')

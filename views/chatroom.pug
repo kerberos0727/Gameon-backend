@@ -1,0 +1,31 @@
+doctype html
+// Copyright GameOn Developer: Alex Choi
+html(lang='en')
+  include layout/header.pug
+  body
+    include layout/navbar1.pug
+    .container
+        h1 View Chat Transcripts
+        input#message(type="text")
+        button#join(type="button") Join
+        button#submit(type="button") Send
+        button#leave(type="button") Leave
+        br
+        // View existing members section
+        h1 Chat Lists
+        .content
+        
+    include layout/footer.pug    
+    script(src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js")     
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js')
+    script(src="https://use.fontawesome.com/d677bd7420.js") 
+    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js') 
+    script(src="https://cdn.socket.io/socket.io-1.0.0.js")
+    script(src='/js/widget/dropzone.min.js')
+    script(src='/js/widget/jquery.datetimepicker.full.min.js')
+    script(src='/js/widget/jquery.jpgp.min.js')
+    script(src='/js/widget/select2.full.min.js')
+    script(src='/js/jquery.toast.min.js')
+    script(src='/js/auth.js')
+    script(src='/js/utils.js')    
+    script(src='/js/chatroom.js')

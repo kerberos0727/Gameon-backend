@@ -1,0 +1,12 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 View Server logs
+        p Server dump, useful mostly for tech team but also for investigating user activities
+        br
+        // View existing members section
+        .center(style="width: 100%; text-align: center")
+            iframe(src="http://ec2-3-8-232-76.eu-west-2.compute.amazonaws.com:9001", frameborder="0", style="width: 90%; height: 400px; overflow-y: auto;border:1px solid")
+            

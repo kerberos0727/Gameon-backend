@@ -1,0 +1,59 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 View stats
+        p Users, stats, and more!
+        a.number-text(href='http://statcounter.com/login') Statcounter for website statistics
+        br
+        // View existing members section
+        .numbers-row
+            .number-item.today-active-users
+                h1 Daily Active Users
+                p 0
+            .number-item.today-users
+                h1 New Signups Today
+                p 0
+            .number-item
+                h1 Card Accepts Today
+                p 0
+            .number-item
+                h1 Matches Today
+                p 0
+            .number-item
+                h1 Messages Today
+                p 0
+        .numbers-row
+            .number-item
+                h1 User Reports Today
+                p 0
+            .number-item
+                h1 Training Happening Today
+                p 0
+            .number-item
+                h1 Card Rejects Today
+                p 0
+            .number-item
+                h1 Events Happening Today
+                p 0
+        .numbers-row.total
+            .number-item.user
+                h1 Total Users
+                p 0
+            .number-item.team
+                h1 Total Teams
+                p 0
+            .number-item.event
+                h1 Total Events
+                p 0
+            .number-item.match
+                h1 Total Matches
+                p 0
+            .number-item.chat
+                h1 Total Chats
+                p 0
+        // View existing members section end
+    
+block extra-script
+    script(src='/js/numbers.js')

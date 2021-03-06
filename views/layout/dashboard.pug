@@ -1,0 +1,23 @@
+doctype html
+// Copyright GameOn Developer: Alex Choi
+html(lang='en')
+  include header.pug
+  body
+    include navbar1.pug
+    .lboxcontainer
+        h1.title #{page}
+    .container
+        block content
+    include footer.pug    
+    script(src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js")     
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js')
+    script(src="https://use.fontawesome.com/d677bd7420.js") 
+    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')   
+    script(src='/js/widget/dropzone.min.js')
+    script(src='/js/widget/jquery.datetimepicker.full.min.js')
+    script(src='/js/widget/jquery.jpgp.min.js')
+    script(src='/js/widget/select2.full.min.js')
+    script(src='/js/jquery.toast.min.js')
+    script(src='/js/auth.js')
+    script(src='/js/utils.js')    
+    block extra-script

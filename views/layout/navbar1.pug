@@ -1,0 +1,17 @@
+// Header and Navigation
+header#header
+  .header
+    nav(role='full-horizontal')
+      a(href='/dashboard')
+        img.logo(src='/img/logo.png')
+      .nav
+        ul.nav
+          if role=='leader'
+            li
+              a(href='/dashboard/teams') Clubs
+          li
+            a(href='/dashboard/settings')
+              i.fa.fa-gear
+          li
+            a(href='/logout')
+              i.fa.fa-sign-out

@@ -1,0 +1,18 @@
+{
+  "registration": {
+    "SUBJECT": "Verify your email at myProject",
+    "MESSAGE": "<p>Hello %s.</p> <p>Welcome! To verify your email, please click in this link:</p> <p>%s/verify/%s</p> <p>Thank you.</p>"
+  },
+  "verifycode": {
+    "SUBJECT": "Verify your phone at myProject",
+    "MESSAGE": "Gameon-Board - Your verify code: %s Thank you."
+  },
+  "forgotPassword": {
+    "SUBJECT": "Password recovery at myProject",
+    "MESSAGE": "<p>To recover the password for user: %s</p> <p>click the following link:</p> <p>%s/reset/%s</p> <p>If this was a mistake, you can ignore this message.</p> <p>Thank you.</p>"
+  },
+  "addTeam": {
+    "SUBJECT": "You added a team as a member.",
+    "MESSAGE": "<p>%s added you as a member of his team.</p>"
+  }
+}

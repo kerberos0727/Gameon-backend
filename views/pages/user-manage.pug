@@ -1,0 +1,68 @@
+extends ../layout/dashboard.pug
+
+block content
+	// Add New members Section
+	h1 Find Users
+	p Start searching to find members, it will fill into the form below once clicked. 
+	.typecontainer
+		form
+			select.users-dropdown(name="user", style="width: 100%")
+			button.loginform#edit-btn(type='button', style="width: calc(50% - 10px); margin-right: 5px;") Edit Member
+			button.loginform#remove-btn(type='button', style="width: calc(50% - 10px); margin-left: 5px;") Remove Member
+		// Add New members Section end
+	br
+	// View existing members section
+	.cardimgarea
+		img.cardimg(src='/img/usercard.png')
+	.typecontainer
+		form.user-form
+			.form-group(style="display: inline-flex; width: 100%")
+				.col(style="width: 50%; padding: 10px")
+					label.cardform(for='first-name')
+						b First Name
+					input(type='text', placeholder='First Name', name='firstName', required='true')
+				.col(style="width: 50%; padding: 10px")
+					label.cardform(for='last-name')
+						b Last Name
+					input(type='text', placeholder='Last Name', name='lastName', required='true')
+			.form-group 
+				label.cardform(for='location')
+					b Age of user
+				input(type='text', placeholder='User Age', name='age', required='')
+			.form-group 
+				label.cardform(for='link')
+					b University
+				select.university-dropdown(name='university', required='true', style="width: 300px;")
+			.form-group 
+				label.cardform(for='time')
+					b Training Date and Time
+				br
+				div#training-time
+			.form-group 
+				label.cardform(for='link')
+					b Long Description
+				input(type='text', placeholder='Long Description', name='description', required='')
+			.form-group 
+				label.cardform(for='cardimg')
+					b Profile Image
+				//- input(type='file', name='cardimg', accept='.jpeg,.jpg,.png', required='')
+				#img-viewer.image-preview(style="height: 120px; border: 1px solid; margin-bottom: 10px")
+					//- img(alt="images.png", src="")
+				input(type="hidden", name="imageUrl", id="image-url", value="")
+			.form-group 
+				label.cardform(for='leader')
+					b Is user suspended?
+				select#enable(name='enable', required='', style="width: 250px")
+					option(value='1') Not suspended
+					option(value='0') Suspended	
+				br
+				label.cardform(for='leader')
+					b Primary Sport?
+				select.sports-dropdown(name='sports', required='true', style="width: 300px;")
+			.form-group
+				button.loginform(type='submit') Submit
+	// View existing members section end
+
+block extra-script
+	script(src='/js/widget/time-range.js')
+	script(src='/js/users.js')

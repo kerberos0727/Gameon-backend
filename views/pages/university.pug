@@ -1,0 +1,33 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 Add a new University
+        p Add a new university option
+        .typecontainer
+            form.add-leader
+                input(type="hidden", name="role", value="leader")
+                .form-group                
+                    label.cardform(for='name')
+                        b Name of University
+                    input(type='text', placeholder='University Name', name='name', required='')
+                button.loginform(type='submit') Submit
+        // Add New members Section end
+        br
+        // View existing members section
+        h1 Edit Universities listed
+        .tablecontainer
+            table#result
+                thead
+                    tr
+                        th Name
+                        th Remove Leader
+                tfooter
+                    tr
+                        th Name
+                        th Remove Leader                
+        // View existing members section end
+
+block extra-script
+    script(src='/js/university.js')

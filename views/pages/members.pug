@@ -1,0 +1,41 @@
+extends ../layout/dashboard.pug 
+
+block content
+	// Add New trial Section
+	h1 Add new members
+	p
+		| Here you can add new members to your team, in the form below start typing the name of the user and click to add them to your team.
+	.typecontainer
+		form.user-form
+			.form-group 
+				select.users-dropdown(name='user', style="width: 350px", required)
+
+			if isLeaderPage		
+				.form-group 
+					label.cardform(for='team')
+						b Allocate to which subteam
+					select#team(name='team',style="width: 300px" required)
+					
+			.form-group 
+				button.loginform(type='submit') Add User
+	// Add New trial Section end
+	br
+	// View existing Trials section
+	h1 Edit current training sessions
+	p Remove current sessions here
+	.tablecontainer
+		table#result
+			thead
+				tr
+					th Name
+					th Remove Session
+			tfooter
+				tr
+					th Name
+					th Remove Session   
+	
+	// View existing trials section end
+
+block extra-script
+	script(src='/js/widget/time-range.js')
+	script(src='/js/member.js')

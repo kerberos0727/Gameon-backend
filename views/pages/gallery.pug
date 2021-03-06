@@ -1,0 +1,30 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 View User Reports
+        p Here you can view reported users and their reasons
+        br
+        // View existing members section
+        h1 Edit Sports listed
+        .tablecontainer
+            table#result
+                thead
+                    tr
+                        th File Name
+                        th Upload Date
+                        th Owner Name
+                        th User Type
+                        th View File
+                tfooter
+                    tr
+                        th File Name
+                        th Upload Date
+                        th Owner Name
+                        th User Type
+                        th View File
+        // View existing members section end
+    include ../modal/file-preview
+block extra-script
+    script(src='/js/gallery.js')

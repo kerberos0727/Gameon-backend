@@ -1,0 +1,43 @@
+doctype html
+// Copyright GameOn Developer: Alex Choi
+html(lang='en')
+  include ./layout/header.pug
+  body
+    // Header and Navigation
+    include ./layout/navbar1.pug
+    // Header and Navigation end
+    // Content Header
+    .container
+      .dash-new
+        h1.dash-head Welcome #{clubName}
+        br
+        p.dash-head Click below to add training, socials, trials and leagues for your club members
+        br
+        ul.img-row
+          li.dash-opt
+            img(src='../img/training.png')
+            br
+            a(href='/dashboard/training')
+              p.new-dash-btn Training
+          li.dash-opt
+            img(src='../img/social.png')
+            br
+            a(href='/dashboard/events')
+              p.new-dash-btn Socials
+        br
+        ul.img-row
+          li.dash-opt
+            img(src='../img/trials.png')
+            br
+            a(href='/dashboard/trials')
+              p.new-dash-btn Trials
+          li.dash-opt
+            img(src='../img/league.png')
+            br
+            a(href='/dashboard')
+              p.new-dash-btn League
+    // Content Header End
+    // Options end
+    // Footer
+    include ./layout/footer
+    // Footer End

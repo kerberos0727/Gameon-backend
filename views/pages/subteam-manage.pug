@@ -1,0 +1,85 @@
+extends ../layout/dashboard.pug 
+
+block content
+	// Add New trial Section
+	h1 Add a new subteam
+	p
+		| Here you can create a subteam which can create events, trials and trainings for each subteam
+	.cardimgarea
+		img.cardimg(src='/img/teamcard.png')
+	.typecontainer
+		form.add-team
+			.form-group 
+				label.cardform(for='name')
+					b Name of Subteam
+				input(type='text', placeholder='Subteam Name', name='name', required='')
+			.form-group 
+				label.cardform(for='location')
+					b Subteam Location
+				input(type='text', placeholder='Subteam Location', name='location', required='')
+			.form-group 
+				label.cardform(for='description')
+					b Subteam Long Description
+				input(type='text', placeholder='Subteam Description', name='description', required='')
+			.form-group 
+				label.cardform(for='email')
+					b Subteam Email
+				input(type='text', placeholder='Subteam Email', name='email', required='')
+			.form-group
+				label.cardform(for='location')
+					b Subteam Password
+					button.pw-btn(type="button", onclick="generatePassword()", style="margin-left: 20px;") Generate
+				input(type='text', placeholder='Password', name='password')
+			.form-group 
+				label.cardform(for='time')
+					b Training Date and Time
+				br
+				div#training-time
+			.form-group 
+				label.cardform(for='cardimg')
+					b Subteam Image
+				//- input(type='file', name='cardimg', accept='.jpeg,.jpg,.png', required='')
+				#team-img.image-preview(style="height: 120px; border: 1px solid; margin-bottom: 10px")
+					//- img(alt="images.png", src="")
+				input(type="hidden", name="imageUrl", id="image-url", value="")
+			.form-group 
+				label.cardform(for='sport')
+					b Sport
+				select.sports-dropdown(name='sports', required='', style="width: 300px;")
+					
+				br
+			if isAdminPage			
+				.form-group 
+					label.cardform(for='leader')
+						b Apply to which team leader?
+					select#leader(name='leader', required='', style="width: 300px;")
+					
+			.form-group 
+				button.loginform(type='submit') Submit
+	// Add New trial Section end
+	br
+	// View existing Trials section
+	h1 Edit subteams
+	p Edit the details
+	.tablecontainer
+		table#result
+			thead
+				tr
+					th Name
+					if isAdminPage
+						th Team Leader
+					th Edit subteam
+					th Remove subteam
+			tfooter
+				tr
+					th Name
+					if isAdminPage
+						th Team Leader
+					th Edit subteam
+					th Remove subteam    
+	
+	// View existing trials section end
+
+block extra-script
+	script(src='/js/widget/play-time.js')
+	script(src='/js/subteam.js')

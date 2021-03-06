@@ -1,0 +1,56 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 Add a new team leader
+        p Add a new team leader here
+        .typecontainer
+            form.add-leader
+                input(type="hidden", name="role", value="leader")
+                .form-group                
+                    label.cardform(for='name')
+                        b Name of Club
+                    input(type='text', placeholder='Club Name', name='clubname', required='')
+                .from-group
+                    label.cardform(for='subname')
+                        b Email Address
+                    input(type='text', placeholder='Email Address', name='email', required='')
+                .form-group
+                    label.cardform(for='location')
+                        b Phone Number
+                    input(type='text', placeholder='Phone Number', name='phone', required='')
+                .form-group
+                    label.cardform(for='location')
+                        b Password
+                        button.pw-btn(type="button", onclick="generatePassword()", style="margin-left: 20px;") Generate
+                    input(type='text', placeholder='Password', name='password', required='')
+                .form-group
+                    label.cardform(for='privacy')
+                        b Sport
+                    select.sports-dropdown(name='sports', required='')
+                    
+                button.loginform(type='submit') Submit
+        // Add New members Section end
+        br
+        // View existing members section
+        h1 Edit Current Team Leaders
+        p Edit team leaders
+        .tablecontainer
+            table#result
+                thead
+                    tr
+                        th Name
+                        th Edit Leader
+                        th Change Password
+                        th Remove Leader
+                tfooter
+                    tr
+                        th Name
+                        th Edit Leader
+                        th Change Password
+                        th Remove Leader                
+        // View existing members section end
+
+block extra-script
+    script(src='/js/teamleader.js')

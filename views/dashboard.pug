@@ -1,0 +1,21 @@
+extends layout/dashboard.pug 
+
+mixin link(menu)
+	a(href=menu.url)
+block content
+	each menu in menus
+		.btn-area
+			h1= menu.title
+			each submenu in menu.submenu
+				.btn-board
+					if menu.extra
+						a(href=submenu.url, target="_blank")
+							.dash-btn
+								img.dash-btn(src='/img/icons/' + submenu.icon)
+								p.dash-btn= submenu.title
+					else
+						a(href='/dashboard/' + submenu.url)
+							.dash-btn
+								img.dash-btn(src='/img/icons/' + submenu.icon)
+								p.dash-btn= submenu.title
+		br

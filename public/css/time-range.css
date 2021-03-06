@@ -1,0 +1,38 @@
+table.time-range {
+    border: 0px;
+}
+
+.time-range tr {
+    height: 50px;    
+}
+.time-range td, .time-range th {
+    border: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.time-range tbody .time-td {
+    cursor: pointer;
+}
+
+.time-range .day {
+    width: 120px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #465177;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.time-range .time {
+    width: 45px;
+    border-radius: 50%;
+    background-color: red;
+    padding: 15px 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.time-range .time.active {
+    background-color: #2ecc71;
+}

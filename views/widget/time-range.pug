@@ -1,0 +1,22 @@
+.tablecontainer
+    table.time-range(border=0)
+        thead
+            tr(style="border-bottom: 1px solid;")
+                th Day
+                th 06:00 ~ 12:00
+                th 12:00 ~ 18:00
+                th 18:00 ~ 23:00            
+        tbody
+            - var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+            each day in days
+                tr(key=day)
+                    td
+                        .day= day
+                    -var times = ['am', 'pm', 'eve']
+                    each time in times
+                        td.time-td(key=time)
+                            .time
+                                span=time.toUpperCase()
+script(src="/js/widget/time-range.js")
+                    
+            

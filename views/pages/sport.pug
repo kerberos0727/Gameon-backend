@@ -1,0 +1,42 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 Add a new Sport
+        p Add a new sport option
+        .typecontainer
+            form.add-leader
+                input(type="hidden", name="role", value="leader")
+                .form-group                
+                    label.cardform(for='name')
+                        b Name of Sport
+                    input(type='text', placeholder='Sport Name', name='name', required='')
+                .form-group 
+                    label.cardform(for='cardimg')
+                        b Sport Image
+                    //- input(type='file', name='cardimg', accept='.jpeg,.jpg,.png', required='')
+                    #sport-image.image-preview(style="height: 120px; border: 1px solid; margin-bottom: 10px")
+                        //- img(alt="images.png", src="")
+                    input(type="hidden", name="imageUrl", id="image-url", value="")
+                button.loginform(type='submit') Submit
+        // Add New members Section end
+        br
+        // View existing members section
+        h1 Edit Sports listed
+        .tablecontainer
+            table#result
+                thead
+                    tr
+                        th Name
+                        th Edit Sport
+                        th Remove
+                tfooter
+                    tr
+                        th Name
+                        th Edit Sport
+                        th Remove
+        // View existing members section end
+
+block extra-script
+    script(src='/js/sport.js')

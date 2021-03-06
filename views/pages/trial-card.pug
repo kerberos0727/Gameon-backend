@@ -1,0 +1,72 @@
+extends ../layout/dashboard.pug 
+
+block content
+	// Add New trial Section
+	h1 Add a new trials
+	p
+		| Here you can add a new trials to appear to anyone on the app, the card appears as following. The card also has a back with a description.
+	.cardimgarea
+		img.cardimg(src='/img/trialscard.png')
+	
+	.typecontainer
+		form.add-card
+			.form-group 
+				label.cardform(for='name')
+					b Name of Trial
+				input(type='text', placeholder='Trial Name', name='name', required='true')
+			.form-group 
+				label.cardform(for='description')
+					b Trial long description
+				input(type='text', placeholder='Trial Description', name='description', required='true')
+			.form-group 
+				label.cardform(for='location')
+					b Web Form Link (e.g Google Forms)
+				input(type='text', placeholder='Web Form Link', name='formLink', required='true')
+			.form-group 
+				label.cardform(for='cardimg')
+					b Trial Image
+				#card-image.image-preview(style="height: 120px; border: 1px solid; margin-bottom: 10px")
+				input(type="hidden", name="imageUrl", id="image-url", value="")
+			if isAdminPage
+				.form-group 
+					label.cardform(for='leader')
+						b Apply to which team leader?
+					select#leader(name='leader', style="width: 100%", required)
+			if isLeaderPage	
+				.form-group 
+					label.cardform(for='team')
+						b Apply to which subteam?
+					select#team(name='team',style="width: 100%" required)
+					
+			.form-group 
+				button.loginform(type='submit') Submit
+	// Add New trial Section end
+	br
+	// View existing Trials section
+	h1 Edit current training sessions
+	p Remove current sessions here
+	.tablecontainer
+		table#result
+			thead
+				tr
+					th Name
+					if isAdminPage
+						th Team Leader
+					if isLeaderPage
+						th Subteam
+					th Edit Session
+					th Remove Session
+			tfooter
+				tr
+					th Name
+					if isAdminPage
+						th Team Leader
+					if isLeaderPage
+						th Subteam
+					th Edit Session
+					th Remove Session   
+	
+	// View existing trials section end
+
+block extra-script
+	script(src='/js/trial-card.js')

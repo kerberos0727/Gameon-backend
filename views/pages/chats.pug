@@ -1,0 +1,30 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 View Chat Transcripts
+        p Here you can view all the chat transcripts from the app
+        br
+        // View existing members section
+        h1 Edit Sports listed
+        .tablecontainer
+            table#result
+                thead
+                    tr
+                        th Name of Users
+                        th Chat Creation Timestamp
+                        th Last Activity Timestamp
+                        th User emails
+                        th View Transcript
+                tfooter
+                    tr
+                        th Name of Users
+                        th Chat Creation Timestamp
+                        th Last Activity Timestamp
+                        th User emails
+                        th View Transcript
+        // View existing members section end
+
+block extra-script
+    script(src='/js/chat.js')

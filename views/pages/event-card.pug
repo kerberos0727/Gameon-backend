@@ -1,0 +1,91 @@
+extends ../layout/dashboard.pug 
+
+block content
+	// Add New trial Section
+	h1 Add a new events
+	p
+		| Here you can add an event for the society, or you can add a social you want anyone on the app to be able to see
+	.cardimgarea
+		img.cardimg(src='/img/eventscard.png')
+	.typecontainer
+		form.add-card
+			.form-group 
+				label.cardform(for='name')
+					b Name of Event
+				input(type='text', placeholder='Event Name', name='name', required='true')
+			.form-group 
+				label.cardform(for='subname')
+					b Event subname
+				input(type='text', placeholder='Event Subname', name='subname', required='true')
+			.form-group 
+				label.cardform(for='location')
+					b Event Location
+				input(type='text', placeholder='Event Location', name='location', required='true')
+			.form-group 
+				label.cardform(for='location')
+					b Event Long Description
+				input(type='text', placeholder='Event Description', name='description', required='true')
+			.form-group 
+				label.cardform(for='location')
+					b Web Form Link (e.g Fixr)
+				input(type='text', placeholder='Web Form Link', name='formLink', required='true')
+			.form-group 
+				label.cardform(for='time')
+					b Event Date and Time
+				br
+				div#training-time
+			.form-group 
+				label.cardform(for='cardimg')
+					b Event Image
+				#card-image.image-preview(style="height: 120px; border: 1px solid; margin-bottom: 10px")
+				input(type="hidden", name="imageUrl", id="image-url", value="")
+			.form-group 
+				label.cardform(for='type')
+					b Event Type
+				select#type(name='type', style="width: 100%", required)
+					option(value="public", checked) Public
+					option(value="private") Private
+			if isAdminPage
+				.form-group 
+					label.cardform(for='leader')
+						b Apply to which team leader?
+					select#leader(name='leader', style="width: 100%", required)
+			if isLeaderPage		
+				.form-group 
+					label.cardform(for='team')
+						b Apply to which subteam?
+					select#team(name='team',style="width: 100%" required)
+					
+			.form-group 
+				button.loginform(type='submit') Submit
+	// Add New trial Section end
+	br
+	// View existing Trials section
+	h1 Edit current training sessions
+	p Remove current sessions here
+	.tablecontainer
+		table#result
+			thead
+				tr
+					th Name
+					if isAdminPage
+						th Team Leader
+					if isLeaderPage		
+						th Subteam
+					th Edit Session
+					th Remove Session
+			tfooter
+				tr
+					th Name
+					if isAdminPage
+						th Team Leader
+					if isLeaderPage		
+						th Subteam
+					th Edit Session
+					th Remove Session   
+	
+	// View existing trials section end
+
+block extra-script
+	script(src='/js/widget/play-time.js')
+	script(src='/js/event-card.js')

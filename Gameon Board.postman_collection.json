@@ -1,0 +1,2529 @@
+{
+	"info": {
+		"_postman_id": "1b9435a4-96c9-4a46-92bd-f85b54dd11bb",
+		"name": "Gameon Board",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"description": null,
+			"item": [
+				{
+					"name": "/api/register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"hello2@user.com\",\n\t\"phone\": \"+86123456787\",\n\t\"provider\": \"local\",\n\t\"fbAuth\": {\n\t\t\"id\": \"aaaaaaaa\",\n\t\t\"token\": \"sssssssssssssssssssssssssssssssssss\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{server}}/api/register",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/verify",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer f90c34c201cfa0220572da3738dd0ff86ce6351d94c5f08ec3f58418873bfd9becc5199ec58b33056194e3781059a81ee8c0979c560431872a5f98f72fca107de7629f0c89d9f83002701b024875781aaac9ba8078b9e6355ca59d7a25bab09c4486e0e43ad51a63ee5a940eb326e827fc712fc9e0d0a2327db487ff70a99b4581c9ea676d75807250b7daa447ec995da352f5e636167e8b57843432b9d4e31c86c955413074ca69d3fffe81f95796a78612a090134fb47503929b9b9eea2efe"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "code",
+									"value": "291581",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/verify",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/resendcode",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/resendcode",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"resendcode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7403aa27-bdcd-40b0-9cd0-c142921f418d",
+								"exec": [
+									"//- auto populates token to environment variables",
+									"pm.test(\"Token returned from login, added to environment.\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"token\");",
+									"    const jsonData = pm.response.json();",
+									"    pm.environment.set('authToken', jsonData.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "identifier",
+									"value": "+8618640247170",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "local",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/social_login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7403aa27-bdcd-40b0-9cd0-c142921f418d",
+								"exec": [
+									"//- auto populates token to environment variables",
+									"pm.test(\"Token returned from login, added to environment.\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"token\");",
+									"    const jsonData = pm.response.json();",
+									"    pm.environment.set('authToken', jsonData.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "identifier",
+									"value": "aaaaa",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "facebook",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/social_login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"social_login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/admin_login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "edb957c2-847e-45fd-96b3-b1e4d1f1aea6",
+								"exec": [
+									"//- auto populates token to environment variables",
+									"pm.test(\"Token returned from login, added to environment.\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"token\");",
+									"    const jsonData = pm.response.json();",
+									"    pm.environment.set('authToken', jsonData.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/admin_login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"admin_login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/token",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"description": null,
+			"item": [
+				{
+					"name": "/api/users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/users?filter=&fields=name,email&page=1&limit=10&sort=name&order=-1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": ""
+								},
+								{
+									"key": "fields",
+									"value": "name,email"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "name"
+								},
+								{
+									"key": "order",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "Sub",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Team2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "team2@outlook.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "team2",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "team",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+1234567890",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "female",
+									"type": "text"
+								},
+								{
+									"key": "sports",
+									"value": "5ebeadc272b4cf3780a38e58",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/users",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/users/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/users/5ebc24ea67252e2338a67f82",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"5ebc24ea67252e2338a67f82"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/users/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/users/5ee0ff4569aa893dfc9b578b",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"5ee0ff4569aa893dfc9b578b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/users/:id",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "Team",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Leader",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "newleader@email.com",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "1234578",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/users/5ebc24ea67252e2338a67f82",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"5ebc24ea67252e2338a67f82"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "setting",
+			"description": null,
+			"item": [
+				{
+					"name": "/api/setting",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/setting",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"setting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"location\": {\n    \t\"lat\": 33.821527,\n    \t\"lng\": -117.511249,\n    \t\"address\": \"2415 Tuscany St, Corona, CA 92881\"\n    },\n    \"distance\": [0, 5],\n    \"gender\": [\"female\"],\n    \"age\": [18, 30],\n    \"seen\": true,\n    \"notifications\": {\n    \t\"matches\": true,\n    \t\"messages\": false,\n    \t\"training\": true,\n    \t\"socials\": false,\n    \t\"vibrations\": true,\n    \t\"sounds\": true\n    }\n}"
+						},
+						"url": {
+							"raw": "{{server}}/api/setting",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"setting"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cards",
+			"description": null,
+			"item": [
+				{
+					"name": "training",
+					"description": "trainging card api",
+					"item": [
+						{
+							"name": "/api/cards/training",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/training?filter=&fields=name&page=1&limit=10&sort=name&order=-1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"training"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": ""
+										},
+										{
+											"key": "fields",
+											"value": "name"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "sort",
+											"value": "name"
+										},
+										{
+											"key": "order",
+											"value": "-1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/training",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Advanced Trial\",\n\t\"availability\": {\n\t\t\"sun\": [{\"start\": \"1589554519124\", \"end\": \"1589554519124\"}],\n\t\t\"mon\": [],\n\t\t\"tue\": [],\n\t\t\"wed\": [],\n\t\t\"thu\": [],\n\t\t\"fri\": [],\n\t\t\"sat\": []\n\t},\n\t\"location\": {\n\t\t\"latitude\": 33.821527,\n    \t\"longitude\": -117.511249,\n    \t\"address\": \"2415 Tuscany St, Corona, CA 92881\"\n\t},\n\t\"imageUrl\": \"hello.png\",\n\t\"formUrl\": \"a.view\",\n\t\"creator\": \"5ee1085311fd152ea8858eb4\"\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/training",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"training"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/training/:id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/training/5ef0d2a497533623187fed35",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"training",
+										"5ef0d2a497533623187fed35"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/training/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Basic Trial\",\n\t\"availability\": {\n\t\t\"sun\": [{\"start\": \"1589554519124\", \"end\": \"1589554519124\"}],\n\t\t\"mon\": [],\n\t\t\"tue\": [],\n\t\t\"wed\": [],\n\t\t\"thu\": [],\n\t\t\"fri\": [],\n\t\t\"sat\": []\n\t},\n\t\"location\": {\n\t\t\"latitude\": 33.821527,\n    \t\"longitude\": -117.511249,\n    \t\"address\": \"2415 Tuscany St, Corona, CA 92881\"\n\t},\n\t\"imageUrl\": \"hello.png\",\n\t\"formUrl\": \"a.view\",\n\t\"description\": \"hello world\",\n\t\"creator\": \"5ebea1b59ac4c8312098123d\"\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/training/5ec6971c9aeea33cc833249f",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"training",
+										"5ec6971c9aeea33cc833249f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/training/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/training/5ec29b17a9aaa315d452f099",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"training",
+										"5ec29b17a9aaa315d452f099"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "event",
+					"description": "trainging card api",
+					"item": [
+						{
+							"name": "/api/cards/event",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/event?filter=&fields=name&page=1&limit=10&sort=name&order=-1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"event"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": ""
+										},
+										{
+											"key": "fields",
+											"value": "name"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "sort",
+											"value": "name"
+										},
+										{
+											"key": "order",
+											"value": "-1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/event",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Advanced Trial\",\n\t\"subName\": \"sub name\",\n\t\"availability\": {\n\t\t\"sun\": [{\"start\": \"1589554519124\", \"end\": \"1589554519124\"}],\n\t\t\"mon\": [],\n\t\t\"tue\": [],\n\t\t\"wed\": [],\n\t\t\"thu\": [],\n\t\t\"fri\": [],\n\t\t\"sat\": []\n\t},\n\t\"location\": {\n\t\t\"latitude\": 33.821527,\n    \t\"longitude\": -117.511249,\n    \t\"address\": \"2415 Tuscany St, Corona, CA 92881\"\n\t},\n\t\"imageUrl\": \"hello.png\",\n\t\"formUrl\": \"a.view\",\n\t\"type\": \"public\",\n\t\"creator\": \"5ec28504481db81028eb8bd1\"\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/event",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"event"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/event/:id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/event/5ec3ea8992128c381435ec35",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"event",
+										"5ec3ea8992128c381435ec35"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/event/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Basic Trial\",\n\t\"subName\": \"hello\",\n\t\"availability\": {\n\t\t\"sun\": [{\"start\": \"1589554519124\", \"end\": \"1589554519124\"}],\n\t\t\"mon\": [],\n\t\t\"tue\": [],\n\t\t\"wed\": [],\n\t\t\"thu\": [],\n\t\t\"fri\": [],\n\t\t\"sat\": []\n\t},\n\t\"location\": {\n\t\t\"latitude\": 33.821527,\n    \t\"longitude\": -117.511249,\n    \t\"address\": \"2415 Tuscany St, Corona, CA 92881\"\n\t},\n\t\"imageUrl\": \"hello.png\",\n\t\"formUrl\": \"a.view\",\n\t\"description\": \"hello world\",\n\t\"type\": \"private\",\n\t\"creator\": \"5ec28504481db81028eb8bd1\"\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/event/5ec3ea8992128c381435ec35",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"event",
+										"5ec3ea8992128c381435ec35"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/event/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/event/5ec3eb0692128c381435ec3e",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"event",
+										"5ec3eb0692128c381435ec3e"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "trial",
+					"description": "trainging card api",
+					"item": [
+						{
+							"name": "/api/cards/trial",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/trial?filter=&fields=name&page=1&limit=10&sort=name&order=-1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"trial"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": ""
+										},
+										{
+											"key": "fields",
+											"value": "name"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "sort",
+											"value": "name"
+										},
+										{
+											"key": "order",
+											"value": "-1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/trial",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Advanced Trial\",\n\t\"imageUrl\": \"hello.png\",\n\t\"formUrl\": \"a.view\",\n\t\"description\": \"hello world\",\n\t\"creator\": \"5ebea1b59ac4c8312098123d\"\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/trial",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"trial"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/trial/:id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/trial/5ec3d5d41614b44b80c23917",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"trial",
+										"5ec3d5d41614b44b80c23917"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/trial/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Basic Trial\",\n\t\"imageUrl\": \"hello.png\",\n\t\"formUrl\": \"a.view\",\n\t\"description\": \"testing update\",\n\t\"creator\": \"5ebea1b59ac4c8312098123d\"\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/trial/5ec6a1d7fe4d364108f07a51",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"trial",
+										"5ec6a1d7fe4d364108f07a51"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/cards/trial/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/cards/trial/5ec3d5d41614b44b80c23917",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cards",
+										"trial",
+										"5ec3d5d41614b44b80c23917"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "/api/cards/join",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "cardId",
+									"value": "5ec2a60cbf25d219e873f931",
+									"type": "text"
+								},
+								{
+									"key": "cardType",
+									"value": "training",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"description": "true - join, false - reject",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/cards/join",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"cards",
+								"join"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/cards/game",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "partner",
+									"value": "5ef0bfb697533623187feb5f",
+									"type": "text"
+								},
+								{
+									"key": "enable",
+									"value": "true",
+									"description": "true - accept match, false - reject match",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/cards/game",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"cards",
+								"game"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/cards",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/cards",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"cards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"description": null,
+			"item": [
+				{
+					"name": "Bio profile",
+					"description": "api of Bio module",
+					"item": [
+						{
+							"name": "/api/profile/bio",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/profile/bio",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"bio"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/profile/bio",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"bio\": {\n\t\t\"description\": \"Lorem ipsum dollar\",\n\t\t\"university\": \"5ef0d21797533623187fec76\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/profile/bio",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"bio"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Ability of profile",
+					"description": "api of Bio module",
+					"item": [
+						{
+							"name": "/api/profile/ability",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/profile/ability",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"ability"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/profile/ability",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ability\": [\n\t\t{\n\t\t\t\"sportId\": \"5ef0d20597533623187fec38\",\n\t\t\t\"level\": \"beginner\"\n\t\t}\n\t]\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/profile/ability",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"ability"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sports of profile",
+					"description": "api of Bio module",
+					"item": [
+						{
+							"name": "/api/profile/sports",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/profile/sports",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"sports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/profile/sports",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"sports\": [\"5ef0d20597533623187fec38\"]\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/profile/sports",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"sports"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Availability of profile",
+					"description": "api of Bio module",
+					"item": [
+						{
+							"name": "/api/profile/availability",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/profile/availability",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"availability"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/profile/availability",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"availability\": {\n\t\t\"sun\": [1, 0, 0],\n\t\t\"mon\": [0, 0, 0],\n\t\t\"tue\": [1, 1, 0],\n\t\t\"wed\": [1, 0, 0],\n\t\t\"thu\": [0, 0, 0],\n\t\t\"fri\": [1, 1, 0],\n\t\t\"sat\": [0, 0, 0]\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{server}}/api/profile/availability",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"availability"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "/api/profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/profile",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/profile",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@test.com\",\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Lake\",\r\n    \"location\": {\r\n    \t\"lat\": 33.821527,\r\n    \t\"lng\": -117.511249,\r\n    \t\"address\": \"2415 Tuscany St, Corona, CA 92881\"\r\n    },\r\n    \"gender\": \"male\"\r\n}"
+						},
+						"url": {
+							"raw": "{{server}}/api/profile",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/profile/changePassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "oldPassword",
+									"value": "sunrise1115",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "haohao",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/profile/changePassword",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/profile/changePassword/userId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "newPassword",
+									"value": "1234567",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/profile/changePassword/5ebd7888639a3329146ff0e8",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"changePassword",
+								"5ebd7888639a3329146ff0e8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin module",
+			"description": "this is api processing by admin role",
+			"item": [
+				{
+					"name": "sports",
+					"description": null,
+					"item": [
+						{
+							"name": "/api/sports/all",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/sports/all",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"sports",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/sports",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/sports?filter=ten&fields=title&page=1&limit=5&sort=title&order=1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"sports"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "ten"
+										},
+										{
+											"key": "fields",
+											"value": "title"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										},
+										{
+											"key": "sort",
+											"value": "title"
+										},
+										{
+											"key": "order",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/sports",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "Football",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "hello.png",
+											"type": "text"
+										},
+										{
+											"key": "enable",
+											"value": "false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/sports",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"sports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/sports/:id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Accept-Language",
+										"type": "text",
+										"value": "es"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/sports/5eb8ab228bb8f12a60fd7100",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"sports",
+										"5eb8ab228bb8f12a60fd7100"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/sports/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "Pingpong",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "hello.png",
+											"type": "text"
+										},
+										{
+											"key": "enable",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/sports/5ebeadc272b4cf3780a38e58?",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"sports",
+										"5ebeadc272b4cf3780a38e58"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "id ASC",
+											"disabled": true
+										},
+										{
+											"key": "skip",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "where",
+											"value": "{ 'email' : { startsWith : 'f' } }",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/sports/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/sports/5eb8ab228bb8f12a60fd7100",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"sports",
+										"5eb8ab228bb8f12a60fd7100"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "university",
+					"description": "university management module",
+					"item": [
+						{
+							"name": "/api/university/all",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/university/all",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"university",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/university",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/university?filter=&fields=name&page=1&limit=5&sort=title&order=1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"university"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": ""
+										},
+										{
+											"key": "fields",
+											"value": "name"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										},
+										{
+											"key": "sort",
+											"value": "title"
+										},
+										{
+											"key": "order",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/university",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Havard Universtiy",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "hello.png",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "sanfranciso ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/university",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"university"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/university/:id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Accept-Language",
+										"type": "text",
+										"value": "es"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/university/5eb8be31ea7bf820288292a7",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"university",
+										"5eb8be31ea7bf820288292a7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/university/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Seatle2",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "hello.png",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Seatle",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/university/5eb8be31ea7bf820288292a7",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"university",
+										"5eb8be31ea7bf820288292a7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/api/university/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/api/university/5eb8be31ea7bf820288292a7",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"university",
+										"5eb8be31ea7bf820288292a7"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0fb9bc06-ac56-4079-ba65-43a23a18b919",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "42dead19-d612-4495-8b0c-4ee37beba92c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "teams",
+			"description": "management of teams card and members",
+			"item": [
+				{
+					"name": "/api/teams",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/teams",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"teams"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "name",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/teams/:chief",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/api/teams/5ec00e26cbe68b229c3aba53",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"teams",
+								"5ec00e26cbe68b229c3aba53"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/teams/:chief/members",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "player",
+									"value": "5ef0a0df97533623187feb5a",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/teams/5ef1f090853ec82b08cab0b5/members",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"teams",
+								"5ef1f090853ec82b08cab0b5",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/teams/:chief/members",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "player",
+									"value": "5ef0a0df97533623187feb5a",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/teams/5ef1f090853ec82b08cab0b5/members",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"teams",
+								"5ef1f090853ec82b08cab0b5",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/teams/:chief",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Pingpong",
+									"type": "text"
+								},
+								{
+									"key": "imageUrl",
+									"value": "hello.png",
+									"type": "text"
+								},
+								{
+									"key": "visibility",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/teams/5ec00e26cbe68b229c3aba53?",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"teams",
+								"5ec00e26cbe68b229c3aba53"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "id ASC",
+									"disabled": true
+								},
+								{
+									"key": "skip",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "where",
+									"value": "{ 'email' : { startsWith : 'f' } }",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/api/image",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": null,
+							"value": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server}}/api/image",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"image"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

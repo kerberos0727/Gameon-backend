@@ -1,0 +1,30 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 View User Relationships
+        p These are all the confirmed matches between users
+        br
+        // View existing members section
+        h1 Edit Sports listed
+        .tablecontainer
+            table#result
+                thead
+                    tr
+                        th Name of user1
+                        th Name of user2
+                        th User1 Email
+                        th User2 Email
+                        th Timestamp
+                tfooter
+                    tr
+                        th Name of user1
+                        th Name of user2
+                        th User1 Email
+                        th User2 Email
+                        th Timestamp
+        // View existing members section end
+
+block extra-script
+    script(src='/js/match.js')

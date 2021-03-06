@@ -1,0 +1,25 @@
+extends ../layout/dashboard.pug 
+
+block content
+    .container
+        // Add New members Section
+        h1 View Login Logs
+        p Here you can view all the recent sign in to the apps, but just because someone isn't here doesn't mean they haven't used the app today! Check to verify new users or likely spam accounts
+        br
+        // View existing members section
+        .tablecontainer
+            table#result
+                thead
+                    tr
+                        th Name of user
+                        th Last Login
+                        th Account Creation Date
+                tfooter
+                    tr
+                        th Name of user
+                        th Last Login
+                        th Account Creation Date
+        // View existing members section end
+    include ../modal/file-preview
+block extra-script
+    script(src='/js/login_logs.js')

@@ -1,0 +1,17 @@
+extends ../layout/dashboard.pug 
+
+block content
+	h1 Edit superadmin
+	p Here you can edit aspects
+	.typecontainer
+		button#pw-btn.loginform(type='button') Change Password
+	.typecontainer
+		button#email-btn.loginform(type='button') Change Email Login
+	// View existing trials section end
+
+	// includes modal
+	include ../modal/change-password.pug
+	include ../modal/change-email.pug
+
+block extra-script
+	script(src='/js/setting.js')
